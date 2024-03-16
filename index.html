@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>idontpaymy.rent</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  #container {
+    position: relative;
+  }
+  img {
+    width: 780px;
+    height: 780px;
+    display: none;
+  }
+  #timer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+  }
+  #made-by {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  #update-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <img id="image1" src="https://idontpaymy.rent/media/1.gif">
+  <img id="image2" src="https://https://idontpaymy.rent/media/2.gif">
+  <img id="image3" src="https://https://idontpaymy.rent/media/3/gif">
+</div>
+  <div id="timer">Time on site: 0 seconds</div>
+</div>
+<div id="made-by">in association with cardashi LLC <a href="https://cardashi.lol" target="_blank">https://cardashi.lol</a></div>
+<div id="update-info">image updates every minute</div>
+
+<script>
+    const images = ['https://https://idontpaymy.rent/media/1.gif', 'https://https://idontpaymy.rent/media/2.gif', 'https://https://idontpaymy.rent/media/3.gif'];
+  let currentIndex = 0;
+  let startTime = new Date().getTime();
+
+  function showImage(index) {
+    const imgElements = document.querySelectorAll('img');
+    imgElements.forEach(img => img.style.display = 'none');
+    imgElements[index].style.display = 'block';
+  }
+
+  function updateTimer() {
+    const elapsedTime = Math.floor((new Date().getTime() - startTime) / 1000);
+    document.getElementById('timer').innerText = `Time on site: ${elapsedTime} seconds`;
+  }
+
+  function rotateImages() {
+    showImage(currentIndex);
+    updateTimer();
+
+    currentIndex = (currentIndex + 1) % images.length;
+    setTimeout(rotateImages, 60000);
+  }
+
+  rotateImages();
+
+  setInterval(updateTimer, 1000);
+</script>
+</body>
+</html>
